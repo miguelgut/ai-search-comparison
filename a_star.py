@@ -76,20 +76,21 @@ class Solucionador:
         inicio_state = EstadoString(self.inicio, 0, self.inicio, self.goal)
         count = 0
         self.priority_queue.put((0, count, inicio_state))
-        root = Node(self.inicio)
         ## Enquanto não há caminho definido e existe uma fila de prioridades para iterar
         while not self.path and self.priority_queue.qsize():
             ## Pega o filho mais próximo e criar suas variações
             closest_child = self.priority_queue.get()[2]
-            print("String com maior prioridade: " + closest_child.value)
+            if(self.print_results == 1):
+                print("String com maior prioridade: " + closest_child.value)
             closest_child.criafilho()
 
             ## Marca este filho como visitado para não buscar novamente 
             self.visited_queue.append(closest_child.value)
-            print("\n")
-            print("String atual: " + closest_child.value + " - Distancia atual: " + str(closest_child.dist))
+            if(self.print_results == 1):
+                print("\n")
+                print("String atual: " + closest_child.value + " - Distancia atual: " + str(closest_child.dist))
+                print("Calculando a distancia dos filhos para saber qual é mais proximo:")
 
-            print("Calculando a distancia dos filhos para saber qual é mais proximo:")
             for child in closest_child.filhos:
                 if child.value not in self.visited_queue:
                     count += 1
@@ -98,11 +99,11 @@ class Solucionador:
                         self.path = child.path
                         break
 
-                    print(child.value + ": "+ str(child.dist))
                     if(self.print_results == 1):
-                    #    printManually(closest_child.value,child.value,closest_child.dist, child.dist)
+                        print(child.value + ": "+ str(child.dist))
+                        printManually(closest_child.value,child.value,closest_child.dist, child.dist)
                     ## Se há distância, salva na fila de prioridades rankeado pela distância
-                        self.priority_queue.put((child.dist, count, child, child.path))
+                    self.priority_queue.put((child.dist, count, child, child.path))
 
         print(self.path)
         if not self.path:
@@ -144,13 +145,13 @@ def resolveArvore(inicio, fim, print_results):
 if __name__ == '__main__':
     start_time = time.time()
     #1
-    #resolveArvore('abc', 'cba',0);
+    #resolveArvore('abc', 'cba',1);
     
     #2
-    resolveArvore('elcup', 'ucpel',1);
+    #resolveArvore('elcup', 'ucpel',1);
     
     #3
-    #resolveArvore('eigtclinenia', 'inteligencia', 0);
+    resolveArvore('eigtclinenia', 'inteligencia', 0);
     
     print("--- %s seconds ---" % (time.time() - start_time))
 

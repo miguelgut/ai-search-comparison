@@ -115,13 +115,13 @@ def resolveArvore(inicio, fim, print_results):
 if __name__ == '__main__':
     start_time = time.time()
     #1
-    #resolveArvore('abc', 'cba',0);
+    resolveArvore('abc', 'cba',0);
     
     #2
-    #resolveArvore('elcup', 'ucpel',1);
+    #resolveArvore('elcup', 'ucpel',0);
     
     #3
-    resolveArvore('eigtclinenia', 'inteligencia', 0);
+    #resolveArvore('eigtclinenia', 'inteligencia', 0);
     
     print("--- %s seconds ---" % (time.time() - start_time))
 
