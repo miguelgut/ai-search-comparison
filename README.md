@@ -1,2 +1,4 @@
-# ai-search-comparison
-Código acadêmico para avaliar a eficiência de buscas com e sem informação. 
+# Inteligência Artificial 
+Repositório acadêmico do graduando Miguel Gut Seara para disciplina de Inteligência Artificial.
+
+Universidade Católica de Pelotas - 2021/01.
